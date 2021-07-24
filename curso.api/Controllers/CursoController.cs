@@ -23,7 +23,7 @@ namespace curso.api.Controllers
         /// <param name="curso"></param>
         /// <returns> Permite criar cursos</returns>
         [SwaggerResponse(statusCode: 201, description: "Sucesso ao Cadastrar o Curso")]
-        [SwaggerResponse(statusCode: 401, description: "Campos Obrigatórios")]
+        [SwaggerResponse(statusCode: 401, description: "Não autorizado")]
         [HttpPost]
         [Route("")]
         public async Task<IActionResult> Post(CursoViewModelInput curso)
