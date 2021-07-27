@@ -1,6 +1,5 @@
 ﻿using curso.api.Business.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace curso.api.Infraestruture.Data.Mapping
 {
     public class UsuarioMapping : IEntityTypeConfiguration<Usuario>
@@ -16,5 +15,9 @@ namespace curso.api.Infraestruture.Data.Mapping
             builder.Property(p => p.Email);
             builder.Property(p => p.Senha);
         }
+
+
+
+
     }
 }

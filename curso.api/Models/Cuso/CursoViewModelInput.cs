@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace curso.api.Models.Cuso
+﻿namespace curso.api.Models.Cuso
 {
     public class CursoViewModelInput
     {

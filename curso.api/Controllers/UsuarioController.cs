@@ -1,18 +1,12 @@
-﻿using curso.api.Filters;
+﻿using curso.api.Business.Entities;
+using curso.api.Extras;
+using curso.api.Filters;
+using curso.api.Infraestruture.Data;
 using curso.api.Models;
 using curso.api.Models.Usuarios;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
+using Microsoft.EntityFrameworkCore;
 using Swashbuckle.AspNetCore.Annotations;
-using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
-using curso.api.Extras;
 
 namespace curso.api.Controllers
 {
@@ -20,7 +14,7 @@ namespace curso.api.Controllers
 
     [Route("api/v1/usuario")]
     [ApiController]
-    public class Usuario : ControllerBase
+    public class UsuarioController : ControllerBase
     {
 
         [SwaggerResponse(statusCode: 200, description: "Sucesso ao Autenticar", Type = typeof(LoginViewModelInput))]
@@ -53,6 +47,20 @@ namespace curso.api.Controllers
         [ValidacaoModelStatePersonalizado]
         public IActionResult Registrar(RegistroViewModelInput loginViewModelInput)
         {
+            var options = new DbContextOptionsBuilder<CursosDbContext>();
+
+            options.UseSqlServer("Server = localhost; Database = Curso;");            
+
+            CursosDbContext contexto = new CursosDbContext(options.Options);
+
+            var usuario = new Usuario();
+
+            usuario.Login = loginViewModelInput.Login;
+            usuario.Email = loginViewModelInput.Email;
+            usuario.Senha = loginViewModelInput.Senha;
+            contexto.Usuario.Add(usuario);
+            contexto.SaveChanges();
+
             return Created("", loginViewModelInput);
 
         }

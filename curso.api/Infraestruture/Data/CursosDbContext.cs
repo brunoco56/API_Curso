@@ -9,10 +9,7 @@ namespace curso.api.Infraestruture.Data
         public CursosDbContext(DbContextOptions<CursosDbContext> options): base(options)
         {
 
-
-
         }
-
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) 
         {

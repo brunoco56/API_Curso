@@ -10,6 +10,7 @@ namespace curso.api.Infraestruture.Data.Mapping
         {
             builder.ToTable("Curso");
             builder.HasKey(p => p.Codigo);
+            //configura para autoincremento no banco
             builder.Property(p => p.Codigo).ValueGeneratedOnAdd();
             builder.Property(p => p.Nome);
             builder.Property(p => p.Descricao);
