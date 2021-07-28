@@ -22,10 +22,10 @@ namespace curso.api.Controllers
         [SwaggerResponse(statusCode: 201, description: "Sucesso ao Cadastrar o Curso")]
         [SwaggerResponse(statusCode: 401, description: "Não autorizado")]
         [HttpPost]
-        [Route("")]        
+        [Route("")]
         public async Task<IActionResult> Post(CursoViewModelInput curso)
         {
-            var codigoUsuario = int.Parse(User.FindFirst(c => c.Type == ClaimTypes.NameIdentifier)?.Value);
+           // var codigoUsuario = int.Parse(User.FindFirst(c => c.Type == ClaimTypes.NameIdentifier)?.Value);
 
             return Created("", curso);
         }
@@ -36,11 +36,11 @@ namespace curso.api.Controllers
         [SwaggerResponse(statusCode: 200, description: "Sucesso ao Obter os Cursos")]
         [SwaggerResponse(statusCode: 401, description: "Não Autorizado")]
         [HttpGet]
-        [Route("")]             
+        [Route("")]
         public async Task<IActionResult> Get()
         {
             //var codigoUsuario = int.Parse(User.FindFirst(c => c.Type == ClaimTypes.NameIdentifier)?.Value);
-            var cursos = new List<CursoViewModelOutput>();            
+            var cursos = new List<CursoViewModelOutput>();
             cursos.Add(new CursoViewModelOutput()
             {
                 Login = "",

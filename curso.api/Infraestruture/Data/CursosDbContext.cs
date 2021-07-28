@@ -6,12 +6,12 @@ namespace curso.api.Infraestruture.Data
 {
     public class CursosDbContext : DbContext
     {
-        public CursosDbContext(DbContextOptions<CursosDbContext> options): base(options)
+        public CursosDbContext(DbContextOptions<CursosDbContext> options) : base(options)
         {
 
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder) 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new CursoMapping());
             modelBuilder.ApplyConfiguration(new UsuarioMapping());

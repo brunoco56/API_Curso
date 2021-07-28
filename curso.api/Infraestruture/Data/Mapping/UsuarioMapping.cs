@@ -9,8 +9,8 @@ namespace curso.api.Infraestruture.Data.Mapping
             //Modelando as entidades do banco
 
             builder.ToTable("Usuario");
-            builder.HasKey(p=> p.Codigo);
-            builder.Property(p=> p.Codigo).ValueGeneratedOnAdd();
+            builder.HasKey(p => p.Codigo);
+            builder.Property(p => p.Codigo).ValueGeneratedOnAdd();
             builder.Property(p => p.Login);
             builder.Property(p => p.Email);
             builder.Property(p => p.Senha);

@@ -1,3 +1,4 @@
+using curso.api.Infraestruture.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -23,6 +24,9 @@ namespace curso.api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+           // services.AddDbContext<CursosDbContext>();
+
 
             services.AddControllers()
                 .ConfigureApiBehaviorOptions(
@@ -62,11 +66,12 @@ namespace curso.api
 
 
             //Aqui vem o token
-           // var secret = Encoding.ASCII.GetBytes(Configuration.GetSection("JwtConfiguration:Secret").Value);
+            // var secret = Encoding.ASCII.GetBytes(Configuration.GetSection("JwtConfiguration:Secret").Value);
 
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-        .AddJwtBearer(options => {
+        .AddJwtBearer(options =>
+        {
             options.TokenValidationParameters = new TokenValidationParameters
             {
                 ValidateIssuerSigningKey = true,
@@ -93,7 +98,8 @@ namespace curso.api
             app.UseRouting();
 
             app.UseAuthentication();
-            app.UseAuthorization();           
+            app.UseAuthorization();
+
 
             app.UseEndpoints(endpoints =>
             {

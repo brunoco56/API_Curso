@@ -26,19 +26,18 @@ namespace curso.api.Controllers
         public IActionResult Logar(LoginViewModelInput loginViewModelInput)
         {
             var usuarioOutput = new UsuarioViewModelOutput
-            { 
-                Email ="brunoco56@hotmail.com",
-                Nome ="Bruno",
+            {
+                Email = "brunoco56@hotmail.com",
+                Nome = "Bruno",
                 Codigo = 1
             };
             string secret = "Buz10s*1981234235657568#%&$&%";
 
             var token = new Token();
-            
 
-            var tokenT =  token.GenerarJwtToken(usuarioOutput.Codigo, secret);
+            var tokenT = token.GenerarJwtToken(usuarioOutput.Codigo, secret);
 
-            return Ok(new{Token = tokenT,Usuario = usuarioOutput});
+            return Ok(new { Token = tokenT, Usuario = usuarioOutput });
 
         }
 
@@ -49,7 +48,7 @@ namespace curso.api.Controllers
         {
             var options = new DbContextOptionsBuilder<CursosDbContext>();
 
-            options.UseSqlServer("Server = localhost; Database = Curso;");            
+            options.UseSqlServer("Data source = .\\SQLEXPRESS; Initial catalog = Curso; Integrated security = True");
 
             CursosDbContext contexto = new CursosDbContext(options.Options);
 
@@ -59,9 +58,8 @@ namespace curso.api.Controllers
             usuario.Email = loginViewModelInput.Email;
             usuario.Senha = loginViewModelInput.Senha;
             contexto.Usuario.Add(usuario);
-            contexto.SaveChanges();
-
-            return Created("", loginViewModelInput);
+           
+            return Created("Usuário Criado com sucesso: ", loginViewModelInput);
 
         }
 

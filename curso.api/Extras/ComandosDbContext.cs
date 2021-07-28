@@ -11,7 +11,7 @@ namespace curso.api.Extras
         {
             var options = new DbContextOptionsBuilder<CursosDbContext>();
 
-            options.UseSqlServer("Server = localhost; Database = Curso;");
+            options.UseSqlServer("Data source = .\\SQLEXPRESS; Initial catalog = Curso; Integrated security = True");
 
             CursosDbContext contexto = new CursosDbContext(options.Options);
 
